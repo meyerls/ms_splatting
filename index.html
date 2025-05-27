@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/x-icon" href="https://github.com/meyerls/For5G/raw/master/resources/img.png">
+    <meta property="og:image" content="https://github.com/meyerls/For5G/raw/master/resources/img.png"/>
+    <meta property="og:title"
+          content="MS Splatting"/>
+    <meta property="og:description"
+          content="Multi-Spectral Gaussian Splatting with Neural Color Representation"/>
+    <meta charset="utf-8">
+    <meta name="keywords"
+          content="3DGS, Gaussian Splatting, Multi-Spectral Reconstruction, Machine Learning, Deep Learning, AI, Vegetation Index, NDVI, Normalized Difference Vegetation Index ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Multi-Spectral Gaussian Splatting with Neural Color Representation</title>
+    <script src="static/js/video_comparison.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+
+
+    <link rel="stylesheet" href="static/css/dics.min.css">
+    <script src="static/js/dics.min.js"></script>
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--script defer src="./static/js/fontawesome.all.min.js"></script-->
+    <script src="./static/js/bulma-carousel.min.js"></script>
+
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+
+        document.addEventListener('DOMContentLoaded', domReady);
+
+        function domReady() {
+            for (const e of document.querySelectorAll(".b-dics")) {
+                new Dics({
+                    container: e,
+                    textPosition: "top"
+                });
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+<section class="hero">
+    <div class="hero-head">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <br>
+                    <img src="static/images/ms_drone.png" width="10%">
+                    <h1 class="title is-1 publication-title">Multi-Spectral Gaussian Splatting <br> with Neural Color
+                        Representation</h1>
+                    <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://meyerls.github.io">Lukas Meyer</a>,</span>
+                        <span class="author-block">
+              <a href="https://github.com">Josef Gruen</a>,</span>
+                        <span class="author-block">
+              <a href="https://mweiherer.github.io/">Max - The Machine - Weiherer</a>,</span>
+                        <span class="author-block">
+              <a href="https://eggerbernhard.ch/">Bernhard Egger</a>,</span>
+                        <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=de&user=cx4AaqoAAAAJ">Marc Stamminger</a>,
+                       <span class="author-block">
+              <a href="https://lfranke.github.io/">Linus Franke</a>
+            </span>
+
+                    </div>
+                    <br>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"> <b>Visual Computing Erlangen</b>, Friedrich-Alexander-Universität Erlangen-Nürnberg-Fürth, Germany</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+                            <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                            <!-- Video Link. -->
+                            <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>                  <span>Video (tbd)</span>
+                </a>
+              </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                <a href="https://github.com/meyerls/FruitNeRFpp"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                           class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    <div class="hero-body  has-text-centered">
+            <!-- Abstract. -->
+        <img src="static/images/pipeline_new_final.png" width="100%">
+
+        </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="section is-small">
+        <div class="hero-body  has-text-centered">
+            <!-- Abstract. -->
+            <h2 class="title is-3">Abstract</h2>
+            <div class="container has-text-justified is-max-desktop">
+                <p>
+                    We present MS-Splatting&mdash;a multi-spectral 3D Gaussian Splatting (3DGS) framework that is able to
+                    generate multi-view consistent novel views from images of multiple, independent cameras with
+                    different spectral domains. In contrast to previous approaches, our method does not require
+                    cross-modal camera calibration and is versatile enough to model a variety of different spectra,
+                    including thermal and \nir, without any algorithmic changes.
+
+                    Unlike existing 3DGS-based frameworks that treat each modality separately (by optimizing per-channel
+                    spherical harmonics) and therefore fail to exploit the underlying spectral and spatial correlations,
+                    our method leverages a novel neural color representation that encodes multi-spectral information
+                    into a learned, compact, per-splat feature embedding. A shallow multi-layer perceptron (MLP) then
+                    decodes this embedding to obtain spectral color values, enabling joint learning of all bands within
+                    a unified representation.
+
+                    Our experiments show that this simple yet effective strategy is able to improve multi-spectral
+                    rendering quality, while also leading to improved per-spectra rendering quality over
+                    state-of-the-art methods. We demonstrate the effectiveness of this new technique in agricultural
+                    applications to render vegetation indices, such as normalized difference vegetation index (NDVI).
+                </p>
+            </div>
+        </div>
+    </section>
+
+<section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="col-md-8 col-md-offset-1">
+                <video class="video" loop playsinline autoplay muted width=70%" type="video/mp4"
+                       src="static/videos/title.mp4"></video>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h2 class="title is-4 is-centered has-text-centered">Synthetic Dataset</h2>
+                <!--img id="pipeline1" src="static/images/FruitNerf_SyntheticDataset.png" width="72%"-->
+            </div>
+            <h4 class="title is-4 is-centered has-text-centered"></h4>
+            <div class="container">
+
+                <div id="results-carousel" class="carousel results-carousel 3">
+                    <div class="item item-apple">
+                        <video poster="" id="apple" autoplay muted loop playsinline height="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/apple.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                    <div class="item item-pear">
+                        <video poster="" id="pear" autoplay muted loop playsinline height="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/pear.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                    <div class="item item-plum">
+                        <video poster="" id="plum" autoplay muted loop playsinline height="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/plum.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                    <div class="item item-mango">
+                        <video poster="" id="mango" autoplay muted loop playsinline height="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/mango.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                    <div class="item item-lemon">
+                        <video poster="" id="lemon" autoplay muted loop playsinline height="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/lemon.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                    <div class="item item-peach">
+                        <video poster="" id="peach" autoplay muted loop playsinline width="100%">
+                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/peach.webm"
+                                    type="video/webm">
+                        </video>
+                    </div>
+                </div>
+                <p>Thanks to <strong> <a href="https://github.com/GSORF" style="color: blueviolet">Adam
+                    Kalisz</a></strong>
+                    for rendering the scenes!</p>
+                <div class="container has-text-centered">
+
+                                        <span class="link-block">
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                           class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Download Synthetic Data here</span>
+                  </a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+        bulmaCarousel.attach('#results-carousel', {
+            slidesToScroll: 1,
+            slidesToShow: 6
+        });
+
+
+    </script>
+
+
+    <section class="hero ">
+        <div class="hero-body is-light is-centered has-text-centered">
+
+
+            <h2 class="title is-3">Acknowledgements</h2>
+            <div class="container has-text-justified is-max-desktop">
+
+                <p>This project is funded by the 5G innovation program of the German Federal Ministry for Digital and
+                    Transport under the funding code 165GU103B and the European Union’s Horizon 2020 research and
+                    innovation program under the Marie Skłodowska-Curie grant agreement No 956585.</p>
+
+                <p>The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen
+                    National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität
+                    Erlangen-Nürnberg (FAU).</p>
+
+                <p>The hardware is funded by the German Research Foundation (DFG).</p>
+
+                <p>We extend our gratitude to <strong>Adam Kalisz</strong> for his unique Blender skills and <strong>Jann-Ole
+                    Henningson</strong> for proof reading our script.</p>
+
+            </div>
+        </div>
+
+</div>
+</section>
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@Article{FruitNeRFpp2024,
+      author       = {Lukas Meyer and Josef Gruen and Maximilian Weiherer and Bernhard Egger and Marc Stamminger},
+      title        = {Multi-Spectral Gaussian Splatting with Neural Color Representation},
+      journal      = {ArXiv},
+      month        = {May},
+      year         = {2025},
+      url          = {https://meyerls.github.io/ms_splatting}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <a class="icon-link"
+               href="http://scholar.google.comf">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+            <a class="icon-link" href="https://github.com/meyerls" class="external-link" disabled>
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+
+
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        The source code of this website is borrowed from <a
+                            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+                        We thank the authors for sharing the template.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
