@@ -91,8 +91,31 @@
                     <br>
 
                     <div class="is-size-5 publication-authors">
-                        <span class="author-block"> <b>Visual Computing Erlangen</b>, Friedrich-Alexander-Universität Erlangen-Nürnberg-Fürth, Germany</span>
+                      <span class="author-block">
+                        <b>Visual Computing Erlangen</b>,
+                        Friedrich-Alexander-Universität Erlangen - Nürnberg
+                        <span class="fuerth" style="display: none;">- Fürth</span>, Germany
+                      </span>
                     </div>
+
+
+                    <script>
+                      document.addEventListener('DOMContentLoaded', () => {
+                        const fuerthEl = document.querySelector('.author-block .fuerth');
+
+                        function toggleFuerth() {
+                          // flip visibility
+                          fuerthEl.style.display = (fuerthEl.style.display === 'none') ? 'inline' : 'none';
+                          // schedule next flip
+                          const delay = Math.random() * (30 - 10) + 10;
+                          setTimeout(toggleFuerth, delay * 1000);
+                        }
+
+                        // initial schedule (so it's hidden at first)
+                        const initialDelay = Math.random() *  (30 - 10) + 10;
+                        setTimeout(toggleFuerth, initialDelay * 1000);
+                      });
+                    </script>
 
                     <div class="column has-text-centered">
                         <div class="publication-links">
