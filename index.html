@@ -76,7 +76,7 @@
             <span class="author-block">
               <a href="https://meyerls.github.io">Lukas Meyer</a>,</span>
                         <span class="author-block">
-              <a href="https://github.com">Josef Gruen</a>,</span>
+              <a href="https://github.com/j-gruen">Josef Grün</a>,</span>
                         <span class="author-block">
               <a href="https://mweiherer.github.io/">Max - The Machine - Weiherer</a>,</span>
                         <span class="author-block">
@@ -126,7 +126,7 @@
               </span>
                             <!-- Code Link. -->
                             <span class="link-block">
-                <a href="https://github.com/meyerls/FruitNeRFpp"
+                <a href="https://github.com/j-gruen/MS-Splatting"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -147,43 +147,43 @@
                     </div>
                 </div>
             </div>
-                    <div class="hero-body  has-text-centered">
-            <!-- Abstract. -->
-        <img src="static/images/pipeline_new_final.png" width="100%">
+            <div class="hero-body  has-text-centered">
+                <!-- Abstract. -->
+                <img src="static/images/pipeline_new_final.png" width="100%">
 
-        </div>
+            </div>
         </div>
     </div>
 </section>
 
 
-    <section class="section is-small">
-        <div class="hero-body  has-text-centered">
-            <!-- Abstract. -->
-            <h2 class="title is-3">Abstract</h2>
-            <div class="container has-text-justified is-max-desktop">
-                <p>
-                    We present MS-Splatting&mdash;a multi-spectral 3D Gaussian Splatting (3DGS) framework that is able to
-                    generate multi-view consistent novel views from images of multiple, independent cameras with
-                    different spectral domains. In contrast to previous approaches, our method does not require
-                    cross-modal camera calibration and is versatile enough to model a variety of different spectra,
-                    including thermal and \nir, without any algorithmic changes.
+<section class="section is-small">
+    <div class="hero-body  has-text-centered">
+        <!-- Abstract. -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="container has-text-justified is-max-desktop">
+            <p>
+                We present MS-Splatting&mdash;a multi-spectral 3D Gaussian Splatting (3DGS) framework that is able to
+                generate multi-view consistent novel views from images of multiple, independent cameras with
+                different spectral domains. In contrast to previous approaches, our method does not require
+                cross-modal camera calibration and is versatile enough to model a variety of different spectra,
+                including thermal and \nir, without any algorithmic changes.
 
-                    Unlike existing 3DGS-based frameworks that treat each modality separately (by optimizing per-channel
-                    spherical harmonics) and therefore fail to exploit the underlying spectral and spatial correlations,
-                    our method leverages a novel neural color representation that encodes multi-spectral information
-                    into a learned, compact, per-splat feature embedding. A shallow multi-layer perceptron (MLP) then
-                    decodes this embedding to obtain spectral color values, enabling joint learning of all bands within
-                    a unified representation.
+                Unlike existing 3DGS-based frameworks that treat each modality separately (by optimizing per-channel
+                spherical harmonics) and therefore fail to exploit the underlying spectral and spatial correlations,
+                our method leverages a novel neural color representation that encodes multi-spectral information
+                into a learned, compact, per-splat feature embedding. A shallow multi-layer perceptron (MLP) then
+                decodes this embedding to obtain spectral color values, enabling joint learning of all bands within
+                a unified representation.
 
-                    Our experiments show that this simple yet effective strategy is able to improve multi-spectral
-                    rendering quality, while also leading to improved per-spectra rendering quality over
-                    state-of-the-art methods. We demonstrate the effectiveness of this new technique in agricultural
-                    applications to render vegetation indices, such as normalized difference vegetation index (NDVI).
-                </p>
-            </div>
+                Our experiments show that this simple yet effective strategy is able to improve multi-spectral
+                rendering quality, while also leading to improved per-spectra rendering quality over
+                state-of-the-art methods. We demonstrate the effectiveness of this new technique in agricultural
+                applications to render vegetation indices, such as normalized difference vegetation index (NDVI).
+            </p>
         </div>
-    </section>
+    </div>
+</section>
 
 <section class="hero is-light is-small">
     <div class="hero-body">
@@ -198,110 +198,37 @@
 
 
 
-    <!--section class="hero is-medium">
+<section class="hero ">
+    <div class="hero-body is-light is-centered has-text-centered">
 
-            </div>
-            <h4 class="title is-4 is-centered has-text-centered"></h4>
-            <div class="container">
 
-                <div id="results-carousel" class="carousel results-carousel 3">
-                    <div class="item item-apple">
-                        <video poster="" id="apple" autoplay muted loop playsinline height="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/apple.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="item item-pear">
-                        <video poster="" id="pear" autoplay muted loop playsinline height="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/pear.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="item item-plum">
-                        <video poster="" id="plum" autoplay muted loop playsinline height="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/plum.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="item item-mango">
-                        <video poster="" id="mango" autoplay muted loop playsinline height="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/mango.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="item item-lemon">
-                        <video poster="" id="lemon" autoplay muted loop playsinline height="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/lemon.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                    <div class="item item-peach">
-                        <video poster="" id="peach" autoplay muted loop playsinline width="100%">
-                            <source src="https://media.githubusercontent.com/media/meyerls/fruit_nerfpp/main/static/videos/peach.webm"
-                                    type="video/webm">
-                        </video>
-                    </div>
-                </div>
-                <p>Thanks to <strong> <a href="https://github.com/GSORF" style="color: blueviolet">Adam
-                    Kalisz</a></strong>
-                    for rendering the scenes!</p>
-                <div class="container has-text-centered">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="container has-text-justified is-max-desktop">
 
-                                        <span class="link-block">
-                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                           class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Download Synthetic Data here</span>
-                  </a></span>
-                </div>
-            </div>
+            <p>Lukas Meyer is funded by the 5G innovation program of the German Federal Ministry for Digital and
+                Transport under the funding code 165GU103B.</p>
+
+            <p>The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen
+                National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität
+                Erlangen-Nürnberg (FAU) under the NHR project \textit{b162dc}. NHR funding is provided by federal and
+                Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG)
+                – 440719683.
+            </p>
+
+            <p> We thank \textbf{Martin Hundhausen} for supporting the scene recordings.</p>
+
+
         </div>
-    </section-->
+    </div>
 
-    <script>
-
-        bulmaCarousel.attach('#results-carousel', {
-            slidesToScroll: 1,
-            slidesToShow: 6
-        });
-
-
-    </script>
-
-
-    <section class="hero ">
-        <div class="hero-body is-light is-centered has-text-centered">
-
-
-            <h2 class="title is-3">Acknowledgements</h2>
-            <div class="container has-text-justified is-max-desktop">
-
-                <p>This project is funded by the 5G innovation program of the German Federal Ministry for Digital and
-                    Transport under the funding code 165GU103B and the European Union’s Horizon 2020 research and
-                    innovation program under the Marie Skłodowska-Curie grant agreement No 956585.</p>
-
-                <p>The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen
-                    National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität
-                    Erlangen-Nürnberg (FAU).</p>
-
-                <p>The hardware is funded by the German Research Foundation (DFG).</p>
-
-                <p>We extend our gratitude to <strong>Adam Kalisz</strong> for his unique Blender skills and <strong>Jann-Ole
-                    Henningson</strong> for proof reading our script.</p>
-
-            </div>
-        </div>
-
-</div>
+    </div>
 </section>
 
 
 <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
-        <pre><code>@Article{FruitNeRFpp2024,
+        <pre><code>@Article{MSSplatting2025,
       author       = {Lukas Meyer and Josef Gruen and Maximilian Weiherer and Bernhard Egger and Marc Stamminger},
       title        = {Multi-Spectral Gaussian Splatting with Neural Color Representation},
       journal      = {ArXiv},
