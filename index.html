@@ -1,298 +1,438 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="icon" type="image/x-icon" href="https://github.com/meyerls/For5G/raw/master/resources/img.png">
-    <meta property="og:image" content="https://github.com/meyerls/For5G/raw/master/resources/img.png"/>
-    <meta property="og:title"
-          content="MS Splatting"/>
-    <meta property="og:description"
-          content="Multi-Spectral Gaussian Splatting with Neural Color Representation"/>
-    <meta charset="utf-8">
-    <meta name="keywords"
-          content="3DGS, Gaussian Splatting, Multi-Spectral Reconstruction, Machine Learning, Deep Learning, AI, Vegetation Index, NDVI, Normalized Difference Vegetation Index ">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Multi-Spectral Gaussian Splatting with Neural Color Representation</title>
-    <script src="static/js/video_comparison.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multi-Spectral Gaussian Splatting with Neural Color Representation</title>
 
+  <!-- Favicon & social -->
+  <link rel="icon" type="image/x-icon" href="https://github.com/meyerls/For5G/raw/master/resources/img.png" />
+  <meta property="og:image" content="https://github.com/meyerls/For5G/raw/master/resources/img.png" />
+  <meta property="og:title" content="MS Splatting" />
+  <meta property="og:description" content="Multi-Spectral Gaussian Splatting with Neural Color Representation" />
+  <meta name="keywords" content="3DGS, Gaussian Splatting, Multi-Spectral Reconstruction, Machine Learning, Deep Learning, AI, Vegetation Index, NDVI, Normalized Difference Vegetation Index" />
 
-    <link rel="stylesheet" href="static/css/dics.min.css">
-    <script src="static/js/dics.min.js"></script>
+  <!-- Bulma + Icons -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css" />
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+  <link rel="stylesheet" href="./static/css/index.css" />
 
-    <link rel="stylesheet" href="./static/css/bulma.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-    <link rel="stylesheet" href="./static/css/index.css">
+  <!-- Comparison lib (kept) -->
+  <link rel="stylesheet" href="static/css/dics.min.css" />
+  <script src="static/js/dics.min.js" defer></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--script defer src="./static/js/fontawesome.all.min.js"></script-->
-    <script src="./static/js/bulma-carousel.min.js"></script>
+  <!-- Scripts (kept) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+  <script src="./static/js/bulma-carousel.min.js" defer></script>
+  <script src="./static/js/bulma-slider.min.js" defer></script>
+  <script src="./static/js/index.js" defer></script>
+  <script src="static/js/video_comparison.js" defer></script>
 
-    <script src="./static/js/bulma-slider.min.js"></script>
-    <script src="./static/js/index.js"></script>
+  <!-- Google Analytics (kept) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
 
+  <style>
+    :root {
+      --brand: #0f766e;
+      --brand-2: #60a5fa;
+    }
+    html { scroll-behavior: smooth; }
+    .navbar.is-translucent { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(10px); }
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
+    .hero.is-landing {
+      background:
+        radial-gradient(1200px 600px at 20% 0%, rgba(96,165,250,.15), transparent),
+        radial-gradient(1000px 500px at 80% 0%, rgba(15,118,110,.12), transparent);
+    }
+    /* Slightly tighter top padding to reduce gap above the logo */
+    .hero.is-landing .hero-body { padding-top: 1.25rem; }
+    @media (min-width: 1024px) {
+      .hero.is-landing .hero-body { padding-top: 2rem; }
+    }
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+    /* Spectral rainbow heading */
+    .title-gradient {
+      background: linear-gradient(
+        90deg,
+        #ff004c,
+        #ff7a00,
+        #ffd400,
+        #26d07c,
+        #00c2ff,
+        #335dff,
+        #7a00ff,
+        #ff00cc
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .title-primary {
+      line-height: 1.1;
+      font-weight: 800;
+    }
 
-        gtag('js', new Date());
+    .shadow-soft { box-shadow: 0 10px 25px rgba(0,0,0,.08); }
+    .rounded-2xl { border-radius: 1rem; }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { filter: brightness(.95); }
+    .btn-ghost { border: 1px solid rgba(0,0,0,.08); }
+    .section-accent { background: linear-gradient(180deg, rgba(15,118,110,.04), transparent 60%); }
 
-        gtag('config', 'G-PYVRSFMDRL');
+    /* Consistent content width across desktop & mobile */
+    .container.wrap { max-width: 960px; }
 
-        document.addEventListener('DOMContentLoaded', domReady);
+    /* Link buttons row */
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: .75rem;
+    }
 
-        function domReady() {
-            for (const e of document.querySelectorAll(".b-dics")) {
-                new Dics({
-                    container: e,
-                    textPosition: "top"
-                });
-            }
-        }
+    /* Top VCE logo — reduced margins for tighter spacing */
+    .logos-top {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+    }
+    .logos-top img { height: 70px; width:auto; filter: grayscale(10%); opacity: .95; }
+    @media (max-width: 767px) {
+      .logos-top img { height: 58px; }
+      .logos-top img { margin-top: 0.5rem; }
+    }
 
-    </script>
+    /* Code block prettify */
+    pre { background: #0f172a; color: #e2e8f0; border-radius: .75rem; padding: 1rem; overflow:auto; }
 
+    /* Responsive video constrained to content width */
+    .video-frame {
+      position:relative;
+      padding-bottom:56.25%;
+      height:0;
+      overflow:hidden;
+      border-radius: 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .video-frame video, .video-frame iframe {
+      position:absolute; top:0; left:0; width:100%; height:100%;
+    }
+
+    /* Author list tiny tweaks */
+    .author-block + .author-block::before { content: " "; }
+
+    /* Main heading sizing: small on mobile */
+    h1.title-primary { font-size: clamp(1.25rem, 5vw, 2rem); }
+    @media (min-width: 768px) {
+      h1.title-primary { font-size: clamp(2rem, 4vw, 2.8rem); }
+    }
+    @media (min-width: 1024px) {
+      h1.title-primary { font-size: 3.4rem; }
+    }
+
+    /* Navbar drone image sizing — visible on all viewports */
+    .nav-drone {
+      height: 40px;
+      width: auto;
+      opacity: .95;
+      margin-left: .5rem;
+    }
+    @media (max-width: 1023px) {
+      .nav-drone { height: 36px; }
+    }
+
+    /* BibTeX copy layout */
+    .bibtex-header {
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .copy-btn {
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <nav class="navbar is-translucent is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="container wrap">
+      <div class="navbar-brand">
+        <!-- Drone is always visible -->
+        <span class="navbar-item">
+          <img class="nav-drone" src="static/images/ms_drone.png" alt="MS Drone" />
+        </span>
+        <span class="navbar-item has-text-weight-semibold">MS-Splatting</span>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="mainNav">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
 
-<section class="hero">
-    <div class="hero-head">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column has-text-centered">
-                    <br>
-                    <img src="static/images/ms_drone.png" width="10%">
-                    <h1 class="title is-1 publication-title">Multi-Spectral Gaussian Splatting <br> with Neural Color
-                        Representation</h1>
-                    <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              <a href="https://meyerls.github.io">Lukas Meyer</a>,</span>
-                        <span class="author-block">
-              <a href="https://github.com/j-gruen">Josef Grün</a>,</span>
-                        <span class="author-block">
-              <a href="https://mweiherer.github.io/">Max - The Machine - Weiherer</a>,</span>
-                        <span class="author-block">
-              <a href="https://eggerbernhard.ch/">Bernhard Egger</a>,</span>
-                        <span class="author-block">
-              <a href="https://scholar.google.com/citations?hl=de&user=cx4AaqoAAAAJ">Marc Stamminger</a>,
-                       <span class="author-block">
-              <a href="https://lfranke.github.io/">Linus Franke</a>
-            </span>
-
-                    </div>
-                    <br>
-
-                    <div class="is-size-5 publication-authors">
-                      <span class="author-block">
-                        <b>Visual Computing Erlangen</b>,
-                        Friedrich-Alexander-Universität Erlangen - Nürnberg
-                        <span class="fuerth" style="display: none;">- Fürth</span>, Germany
-                      </span>
-                    </div>
-
-
-                    <script>
-                      document.addEventListener('DOMContentLoaded', () => {
-                        const fuerthEl = document.querySelector('.author-block .fuerth');
-
-                        function toggleFuerth() {
-                          // flip visibility
-                          fuerthEl.style.display = (fuerthEl.style.display === 'none') ? 'inline' : 'none';
-                          // schedule next flip
-                          const delay = Math.random() * (30 - 10) + 10;
-                          setTimeout(toggleFuerth, delay * 1000);
-                        }
-
-                        // initial schedule (so it's hidden at first)
-                        const initialDelay = Math.random() *  (30 - 10) + 10;
-                        setTimeout(toggleFuerth, initialDelay * 1000);
-                      });
-                    </script>
-
-                    <div class="column has-text-centered">
-                        <div class="publication-links">
-                            <!-- PDF Link. -->
-                            <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-                            <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-                            <!-- Video Link. -->
-                            <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>                  <span>Video (tbd)</span>
-                </a>
-              </span>
-                            <!-- Code Link. -->
-                            <span class="link-block">
-                <a href="https://github.com/j-gruen/MS-Splatting"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-                            <!-- Dataset Link. -->
-                            <span class="link-block">
-                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                           class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-body  has-text-centered">
-                <!-- Abstract. -->
-                <img src="static/images/pipeline_new_final.png" width="100%">
-
-            </div>
+      <div id="mainNav" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="#abstract">Abstract</a>
+          <a class="navbar-item" href="#video">Video</a>
+          <a class="navbar-item" href="#acknowledgements">Acknowledgements</a>
+          <a class="navbar-item" href="#BibTeX">BibTeX</a>
         </div>
-    </div>
-</section>
-
-
-<section class="section is-small">
-    <div class="hero-body  has-text-centered">
-        <!-- Abstract. -->
-        <h2 class="title is-3">Abstract</h2>
-        <div class="container has-text-justified is-max-desktop">
-            <p>
-                We present MS-Splatting&mdash;a multi-spectral 3D Gaussian Splatting (3DGS) framework that is able to
-                generate multi-view consistent novel views from images of multiple, independent cameras with
-                different spectral domains. In contrast to previous approaches, our method does not require
-                cross-modal camera calibration and is versatile enough to model a variety of different spectra,
-                including thermal and \nir, without any algorithmic changes.
-
-                Unlike existing 3DGS-based frameworks that treat each modality separately (by optimizing per-channel
-                spherical harmonics) and therefore fail to exploit the underlying spectral and spatial correlations,
-                our method leverages a novel neural color representation that encodes multi-spectral information
-                into a learned, compact, per-splat feature embedding. A shallow multi-layer perceptron (MLP) then
-                decodes this embedding to obtain spectral color values, enabling joint learning of all bands within
-                a unified representation.
-
-                Our experiments show that this simple yet effective strategy is able to improve multi-spectral
-                rendering quality, while also leading to improved per-spectra rendering quality over
-                state-of-the-art methods. We demonstrate the effectiveness of this new technique in agricultural
-                applications to render vegetation indices, such as normalized difference vegetation index (NDVI).
-            </p>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <a class="button btn-primary is-rounded" href="https://meyerls.github.io/" target="_blank" rel="noopener">Other Projects</a>
+          </div>
+          <div class="navbar-item">
+            <a class="button is-light is-rounded" href="https://github.com/j-gruen/MS-Splatting" target="_blank" rel="noopener">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </nav>
 
-<section class="hero is-light is-small">
+  <!-- LANDING / HERO -->
+  <section id="top" class="hero is-landing is-medium">
     <div class="hero-body">
-        <div class="container has-text-centered">
-            <div class="col-md-8 col-md-offset-1">
-                <video class="video" loop playsinline autoplay muted width=70%" type="video/mp4"
-                       src="https://github.com/meyerls/ms_splatting/raw/refs/heads/main/static/videos/title.mp4"></video>
-            </div>
+      <div class="container has-text-centered wrap">
+        <!-- VCE logo centered at top -->
+        <div class="logos-top">
+          <img src="static/images/vce_logo.png" alt="Visual Computing Erlangen (VCE)" title="Visual Computing Erlangen" />
         </div>
-    </div>
-</section>
 
+        <h1 class="title title-primary title-gradient">Multi-Spectral Gaussian Splatting<br/>with Neural Color Representation</h1>
 
-
-<section class="hero ">
-    <div class="hero-body is-light is-centered has-text-centered">
-
-
-        <h2 class="title is-3">Acknowledgements</h2>
-        <div class="container has-text-justified is-max-desktop">
-
-            <p>Lukas Meyer is funded by the 5G innovation program of the German Federal Ministry for Digital and
-                Transport under the funding code 165GU103B.</p>
-
-            <p>The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen
-                National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität
-                Erlangen-Nürnberg (FAU) under the NHR project \textit{b162dc}. NHR funding is provided by federal and
-                Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG)
-                – 440719683.
-            </p>
-
-            <p> We thank \textbf{Martin Hundhausen} for supporting the scene recordings.</p>
-
-
+        <div class="is-size-5 publication-authors mt-3">
+          <span class="author-block"><a href="https://meyerls.github.io">Lukas Meyer</a>,</span>
+          <span class="author-block"><a href="https://github.com/j-gruen">Josef Grün</a>,</span>
+          <span class="author-block"><a href="https://mweiherer.github.io/">Maximilian Weiherer</a>,</span>
+          <span class="author-block"><a href="https://eggerbernhard.ch/">Bernhard Egger</a>,</span>
+          <span class="author-block"><a href="https://scholar.google.com/citations?hl=de&user=cx4AaqoAAAAJ">Marc Stamminger</a>,</span>
+          <span class="author-block"><a href="https://lfranke.github.io/">Linus Franke</a></span>
         </div>
+
+        <div class="is-size-6 mt-2">
+          <b>Visual Computing Erlangen</b>,
+          Friedrich-Alexander-Universität Erlangen - Nürnberg
+          <span class="fuerth" style="display:none;">- Fürth</span>, Germany
+        </div>
+
+        <!-- Links row -->
+        <div class="link-grid mt-5">
+          <a href="https://arxiv.org/pdf/2506.03407" class="button is-dark is-rounded">
+            <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+          </a>
+          <a href="https://arxiv.org/abs/2506.03407" class="button is-dark is-rounded">
+            <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=5AQRJ7Ns9q0" class="button is-dark is-rounded">
+            <span class="icon"><i class="fab fa-youtube"></i></span><span>Video</span>
+          </a>
+          <a href="https://github.com/j-gruen/MS-Splatting" class="button is-dark is-rounded">
+            <span class="icon"><i class="fab fa-github"></i></span><span>Code</span>
+          </a>
+          <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="button is-dark is-rounded">
+            <span class="icon"><i class="far fa-images"></i></span><span>Data (tbd)</span>
+          </a>
+        </div>
+
+        <!-- Pipeline image -->
+        <div class="container mt-6 wrap">
+          <figure class="image shadow-soft rounded-2xl">
+            <img src="static/images/pipeline_new_final.png" alt="Pipeline" style="width:100%; height:auto;" />
+          </figure>
+        </div>
+      </div>
     </div>
+  </section>
 
+  <!-- ABSTRACT -->
+  <section id="abstract" class="section section-accent">
+    <div class="container is-max-desktop wrap">
+      <h2 class="title is-3 has-text-centered">Abstract</h2>
+      <div class="content is-size-5 has-text-justified">
+        <p>
+          We present MS-Splatting — a multi-spectral 3D Gaussian Splatting (3DGS) framework that is able to
+          generate multi-view consistent novel views from images of multiple, independent cameras with
+          different spectral domains. In contrast to previous approaches, our method does not require
+          cross-modal camera calibration and is versatile enough to model a variety of different spectra,
+          including thermal and NIR, without any algorithmic changes.
+        </p>
+        <p>
+          Unlike existing 3DGS-based frameworks that treat each modality separately (by optimizing per-channel
+          spherical harmonics) and therefore fail to exploit the underlying spectral and spatial correlations,
+          our method leverages a novel neural color representation that encodes multi-spectral information
+          into a learned, compact, per-splat feature embedding. A shallow multi-layer perceptron (MLP) then
+          decodes this embedding to obtain spectral color values, enabling joint learning of all bands within
+          a unified representation.
+        </p>
+        <p>
+          Our experiments show that this simple yet effective strategy is able to improve multi-spectral
+          rendering quality, while also leading to improved per-spectra rendering quality over
+          state-of-the-art methods. We demonstrate the effectiveness of this new technique in agricultural
+          applications to render vegetation indices, such as normalized difference vegetation index (NDVI).
+        </p>
+      </div>
     </div>
-</section>
+  </section>
 
+  <!-- VIDEO -->
+  <section id="video" class="section">
+    <div class="container wrap">
+      <h2 class="title is-3 has-text-centered">Teaser</h2>
+      <div class="video-frame shadow-soft rounded-2xl">
+        <video class="video" loop playsinline autoplay muted type="video/mp4" src="https://github.com/meyerls/ms_splatting/raw/refs/heads/main/static/videos/title.mp4"></video>
+      </div>
+    </div>
+  </section>
 
-<section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-        <h2 class="title">BibTeX</h2>
-        <pre><code>@Article{MSSplatting2025,
-      author       = {Lukas Meyer and Josef Gruen and Maximilian Weiherer and Bernhard Egger and Marc Stamminger},
-      title        = {Multi-Spectral Gaussian Splatting with Neural Color Representation},
-      journal      = {ArXiv},
-      month        = {May},
-      year         = {2025},
-      url          = {https://meyerls.github.io/ms_splatting}
+  <!-- ACKNOWLEDGEMENTS -->
+  <section id="acknowledgements" class="section">
+    <div class="container is-max-desktop wrap">
+      <h2 class="title is-3 has-text-centered">Acknowledgements</h2>
+      <div class="content is-size-5 has-text-justified">
+        <p>Lukas Meyer is funded by the 5G innovation program of the German Federal Ministry for Digital and
+          Transport under the funding code 165GU103B.</p>
+
+        <p>The authors gratefully acknowledge the scientific support and HPC resources provided by the Erlangen
+          National High Performance Computing Center (NHR@FAU) of the Friedrich-Alexander-Universität
+          Erlangen-Nürnberg (FAU) under the NHR project <em>b162dc</em>. NHR funding is provided by federal and
+          Bavarian state authorities. NHR@FAU hardware is partially funded by the German Research Foundation (DFG)
+          – 440719683.
+        </p>
+
+        <p> We thank <strong>Martin Hundhausen</strong> for supporting the scene recordings.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIBTEX -->
+  <section id="BibTeX" class="section">
+    <div class="container is-max-desktop wrap">
+      <div class="bibtex-header">
+        <h2 class="title is-3">BibTeX</h2>
+        <button id="copyBibBtn" class="button is-small is-link copy-btn" type="button" aria-label="Copy BibTeX entry">
+          <span class="icon"><i class="fas fa-copy"></i></span>
+          <span>Copy</span>
+        </button>
+      </div>
+      <pre><code id="bibtexEntry">@Article{MSSplatting2025,
+  author       = {Lukas Meyer and Josef Gruen and Maximilian Weiherer and Bernhard Egger and Marc Stamminger},
+  title        = {Multi-Spectral Gaussian Splatting with Neural Color Representation},
+  journal      = {ArXiv},
+  month        = {May},
+  year         = {2025},
+  url          = {https://meyerls.github.io/ms_splatting}
 }</code></pre>
+      <p id="copyStatus" class="has-text-grey is-size-7" role="status" aria-live="polite" style="min-height:1.25rem;"></p>
     </div>
-</section>
+  </section>
 
-<footer class="footer">
+  <!-- FOOTER -->
+  <footer class="footer">
     <div class="container">
-        <div class="content has-text-centered">
-            <a class="icon-link"
-               href="http://scholar.google.comf">
-                <i class="fas fa-file-pdf"></i>
-            </a>
-            <a class="icon-link" href="https://github.com/meyerls" class="external-link" disabled>
-                <i class="fab fa-github"></i>
-            </a>
+      <div class="content has-text-centered">
+        <a class="icon-link" href="http://scholar.google.comf"><i class="fas fa-file-pdf"></i></a>
+        <a class="icon-link" href="https://github.com/meyerls" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              The source code of this website is borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+              We thank the authors for sharing the template.
+            </p>
+          </div>
         </div>
-
-
-        <div class="columns is-centered">
-            <div class="column is-8">
-                <div class="content">
-                    <p>
-                        This website is licensed under a <a rel="license"
-                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-                        Commons Attribution-ShareAlike 4.0 International License</a>.
-                    </p>
-                    <p>
-                        The source code of this website is borrowed from <a
-                            href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
-                        We thank the authors for sharing the template.
-                    </p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</footer>
+  </footer>
 
+  <!-- Tiny navbar burger + Fürth toggle + Copy setup -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fürth toggle (kept behavior)
+      const fuerthEl = document.querySelector('.fuerth');
+      function toggleFuerth(){
+        if(!fuerthEl) return;
+        fuerthEl.style.display = (fuerthEl.style.display === 'none') ? 'inline' : 'none';
+        const delay = Math.random() * (30 - 10) + 10;
+        setTimeout(toggleFuerth, delay * 1000);
+      }
+      const initialDelay = Math.random() * (30 - 10) + 10;
+      setTimeout(toggleFuerth, initialDelay * 1000);
+
+      // Navbar burger (mobile)
+      const burger = document.querySelector('.navbar-burger');
+      const menu = document.getElementById('mainNav');
+      if (burger && menu) {
+        burger.addEventListener('click', () => {
+          const isActive = burger.classList.toggle('is-active');
+          menu.classList.toggle('is-active', isActive);
+          burger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        });
+      }
+
+      // Initialize Dics comparisons if present
+      document.querySelectorAll('.b-dics').forEach(e => {
+        new Dics({ container: e, textPosition: 'top' });
+      });
+
+      // Copy BibTeX button
+      const copyBtn = document.getElementById('copyBibBtn');
+      const bibCode = document.getElementById('bibtexEntry');
+      const statusEl = document.getElementById('copyStatus');
+
+      async function copyBibtex() {
+        const text = bibCode.innerText;
+        try {
+          await navigator.clipboard.writeText(text);
+          statusEl.textContent = 'Copied!';
+          statusEl.classList.remove('has-text-danger');
+          statusEl.classList.add('has-text-success');
+        } catch (_) {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            statusEl.textContent = 'Copied!';
+            statusEl.classList.remove('has-text-danger');
+            statusEl.classList.add('has-text-success');
+          } catch (e) {
+            statusEl.textContent = 'Copy failed.';
+            statusEl.classList.remove('has-text-success');
+            statusEl.classList.add('has-text-danger');
+          }
+        }
+        setTimeout(() => { statusEl.textContent = ''; }, 2500);
+      }
+      if (copyBtn) copyBtn.addEventListener('click', copyBibtex);
+    });
+  </script>
 </body>
 </html>
